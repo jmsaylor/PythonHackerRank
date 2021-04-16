@@ -1,20 +1,23 @@
+import sys
+
 def minimumBribes(q):
-    bribes = 0
     is_chaotic = False
-    for original, current in enumerate(q, start=1):
-        print("current", current, "original", original)
-        if current < original:
-            continue
-        if current - original > 2:
+    for i, Pos in enumerate(q, start=1):
+        if Pos - i > 2:
             is_chaotic = True
-            break
 
-        bribes += current - original
+    bribes = 0
 
-    result = bribes if is_chaotic == False else "Too Chaotic"
+    for z in range(3):
+        print(z)
+        for i in range(len(q) - 1):
+            if q[i] > i + 1:
+                q[i], q[i + 1] = q[i + 1], q[i]
+                print(q)
+                bribes += 1
 
-    print(result)
+    print(bribes if is_chaotic == False else "Too chaotic")
 
 
-arr = minimumBribes([2, 1, 5, 3, 4])
-print(arr)
+minimumBribes([1, 2, 5, 3, 4, 7, 8, 6])
+
