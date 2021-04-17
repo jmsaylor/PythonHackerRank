@@ -15,8 +15,8 @@ def sherlockAndAnagrams(s):
     return result
 
 
-def permutations(n):
-    return factorial(n) / (2 * factorial(n - 2))
+def permutations(n, r):
+    return factorial(n) / (factorial(r) * factorial(n - r))
 
 
 def factorial(n):
